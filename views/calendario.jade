@@ -1,0 +1,38 @@
+include header.jade
+br
+br
+br
+br
+.row
+  .container
+    iframe(src="https://www.google.com/calendar/embed?src=dariofacundodasilva%40gmail.com&src=mjcallao%40gmail.com&src=diego.barrueta%40gmail.com&ctz=America/Argentina/Buenos_Aires" style="border: 0" width="800" height="600" frameborder="0" scrolling="no")
+div.container
+  div.row.clearfix
+  form(role='form', method="post", action="/add")
+    div.col-md-6.column
+      h3
+        | Agregar Evento
+        div.form-group
+          label Evento
+          input#evento.form-control(type='text', name='evento')
+        div.form-group
+          label Fecha
+          input#fecha.form-control(type='text', name='fecha')
+        div.form-group
+          label Hora Inico
+          input#hora.form-control(type='text', name='horaInicio')
+        div.form-group
+          label Hora Fin
+          input#hora.form-control(type='text', name='horaFin')
+    div.col-md-6.column
+      h3.text-center.text-primary
+        | h3. Lorem ipsum dolor sit amet.
+      form(role='form')
+        div.form-group
+          label Entrevistador
+          input#entrevistador.form-control(type='text')
+        div.form-group
+          label Descripción
+          input#descripcion.form-control(type='password')
+        button.btn.btn-primary(type='submit') Ingresar Evento
+ include footer.jade

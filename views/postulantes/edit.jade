@@ -1,0 +1,92 @@
+﻿extends ../layout
+block content
+  h1 Guardar postulante
+  form(method="post", action="#{action}")
+    -if(put)
+      input(type="hidden" name="_method" value="PUT")
+    label Nombre
+    br
+    input(type="text" name="nombre" required="required"  value=postulante.nombre)
+    br
+    br
+    label Apellido
+    br
+    input(type="text" name="apellido" required="required" value=postulante.apellido)
+    br
+    br
+    label Dni
+    br
+    input(type="number" name="dni" required="required" value=postulante.dni)
+    br
+    br
+    label Nacimiento
+    br
+    input(type="date" name="nacimiento" required="required" value=postulante.nacimiento)
+    br
+    br
+    label Direccion
+    br
+    input(type="text" name="direccion" required="required" value=postulante.direccion)
+    br
+    br
+    label Email
+    br
+    input(type="email" name="email" required="required" value=postulante.email)
+    br
+    br
+    label Remuneracion pretendida
+    br
+    input(type="number" name="remuneracion" required="required" value=postulante.remuneracion)
+    br
+    br
+    label Otros
+    br
+    input(type="text" name="otros" value=postulante.otros)
+    br
+    br
+
+
+    - var n = 0
+    label Tecnologias: 
+    br
+    - var existe = false
+    -each tecnologia in tecnologiasBD
+        -each tec in tecnologias
+            -if(tec==tecnologia.nombre)
+                -existe=true
+        -if(n>4)
+            -if (existe)
+                input(type="checkbox" name="tecnologias[]" value=tecnologia.nombre checked)
+                label #{tecnologia.nombre}
+                br
+                -n=0
+                -m++
+                -existe=false
+            -else
+                input(type="checkbox" name="tecnologias[]" value=tecnologia.nombre)
+                label #{tecnologia.nombre}
+                br
+                -n=0
+                -m++
+                -existe=false
+        -else
+            -if(existe)
+                input(type="checkbox" name="tecnologias[]" value=tecnologia.nombre checked)
+                label #{tecnologia.nombre}
+                -n++
+                -m++
+                -existe=false
+            -else
+                input(type="checkbox" name="tecnologias[]" value=tecnologia.nombre)
+                label #{tecnologia.nombre}
+                -n++
+                -m++
+                -existe=false
+    br
+    br
+    
+
+
+    input(type="submit", value="Guardar")
+    a(href="/postulantes") Cancelar
+    

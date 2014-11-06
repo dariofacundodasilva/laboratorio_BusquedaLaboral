@@ -1,0 +1,13 @@
+﻿extends ../layout
+block content
+  h1 #{entrevistador.nombre} #{entrevistador.apellido}
+  p dni: #{entrevistador.dni}
+  p fecha de nacimiento: #{nacimiento}
+  p edad: #{edad}
+  p Email: #{entrevistador.email}
+  p Direccion:#{entrevistador.direccion}
+  p tecnologias: #{entrevistador.tecnologias}
+  p Otros: #{entrevistador.otros}
+  //a(href="/upload") Subida de imagen
+  br
+  a(href="/entrevistadores") Volver atrás

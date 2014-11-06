@@ -1,0 +1,30 @@
+﻿extends ../layout
+block content
+  h1 Tecnologias
+    
+  
+  form(method="post", action="/tecnologias/crear")
+    br
+    label Nombre
+    input(type="text", name="nombre")
+    input(type="submit", value="Crear")
+  br
+  -if(tecnologias.length > 0)
+    table
+      thead
+        tr
+          th Nombre
+      tbody
+        -each tecnologia in tecnologias
+          tr
+            td #{tecnologia.nombre}
+           
+            td 
+              a(href="/tecnologias/#{tecnologia._id}/edit") Editar
+            td
+              form(method="post", action="/tecnologias/#{tecnologia._id}")
+                input(type="hidden", name="_method", value="DELETE")
+                a(href="javascript:void(0);", onclick="if(confirm('¿Está seguro que desea eliminar este registro?')){this.parentNode.submit();}") Eliminar
+  -else
+    p No se han encontrado teccnologias
+  a(href="/") volver al inicio

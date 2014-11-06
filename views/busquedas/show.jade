@@ -1,0 +1,10 @@
+﻿extends ../layout
+block content
+  h1 #{postulante.nombre} #{postulante.apellido}
+  p dni: #{postulante.dni}
+  p fecha de nacimiento: #{nacimiento}
+  p edad: #{edad}
+  p tecnologias: #{postulante.tecnologias}
+  a(href="/upload") Subida de imagen
+  br
+  a(href="/postulantes") Volver atrás

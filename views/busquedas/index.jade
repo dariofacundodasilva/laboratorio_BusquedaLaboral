@@ -1,0 +1,39 @@
+﻿extends ../layout
+block content
+  h1 Entrevistadores
+    
+  a(href="/entrevistadores/create") Crear nuevo entrevistador
+  br
+  form(method="post", action="/entrevistadores/buscar")
+    br
+    label Nombre
+    input(type="text", name="nombre")
+    label apellido
+    input(type="text", name="apellido")
+    input(type="submit", value="Buscar")
+  br
+  -if(entrevistadores.length > 0)
+    table
+      thead
+        tr
+          th Nombre
+          th Apellido
+          th
+          th
+          th
+      tbody
+        -each entrevistador in entrevistadores
+          tr
+            td #{entrevistador.nombre}
+            td #{entrevistador.apellido}
+            td 
+              a(href="/entrevistadores/#{entrevistador._id}") Ver
+            td 
+              a(href="/entrevistadores/#{entrevistador._id}/edit") Editar
+            td
+              form(method="post", action="/entrevistadores/#{entrevistador._id}")
+                input(type="hidden", name="_method", value="DELETE")
+                a(href="javascript:void(0);", onclick="if(confirm('¿Está seguro que desea eliminar este registro?')){this.parentNode.submit();}") Eliminar
+  -else
+    p No se han encontrado entrevistadores
+  a(href="/") volver al inicio

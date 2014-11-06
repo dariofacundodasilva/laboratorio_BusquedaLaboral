@@ -1,0 +1,50 @@
+﻿extends ../layout
+block content
+  h1 Guardar entrevistador
+  form(method="post", action="#{action}")
+    -if(put)
+      input(type="hidden", name="_method", value="PUT")
+    label Nombre
+    br
+    input(type="text", name="nombre", required="required",  value=entrevistador.nombre)
+    br
+    br
+    label Apellido
+    br
+    input(type="text", name="apellido", required="required", value=entrevistador.apellido)
+    br
+    br
+    label Dni
+    br
+    input(type="number", name="dni", required="required", value=entrevistador.dni)
+    br
+    br
+    label Nacimiento
+    br
+    input(type="date", name="nacimiento", required="required", value=entrevistador.nacimiento)
+    br
+    br
+    - var n = 0
+    label Tecnologias: 
+    br
+
+    -each tecnologia in tecnologias
+        -if(n>4)
+            input(type="checkbox" name="tecnologias[]" value=tecnologia checked)
+            label #{tecnologia}
+            br
+            -n=0
+            -m++
+        -else
+            input(type="checkbox" name="tecnologias[]" value=tecnologia checked)
+            label #{tecnologia}
+            -n++
+            -m++
+    br
+    br
+    
+
+
+    input(type="submit", value="Guardar")
+    a(href="/entrevistadores") Cancelar
+    

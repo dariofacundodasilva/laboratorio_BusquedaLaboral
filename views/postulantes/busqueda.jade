@@ -1,0 +1,42 @@
+﻿extends ../layout
+block content
+  h1 Busqueda de postulantes con las siguientes tecnologias: #{tecnob}
+
+    
+ 
+  form(method="post", action="/buscarPorTecnologiaI")
+    -each tecnologia in tecnologias
+        -if(n>4)
+            input(type="checkbox" name="tecnologias[]" value=tecnologia.nombre)
+            label #{tecnologia.nombre}
+            br
+            -n=0
+            -m++
+        -else
+            input(type="checkbox" name="tecnologias[]" value=tecnologia.nombre)
+            label #{tecnologia.nombre}
+            -n++
+            -m++ 
+    input(type="submit", value="Buscar")
+  br
+
+  -if(postulantes.length > 0)
+    table
+      thead
+        tr
+          th Nombre
+          th Apellido
+          th Tecnologias
+          th
+          th
+      tbody
+        -each postulante in postulantes
+          tr
+            td #{postulante.nombre}
+            td #{postulante.apellido}
+            td #{postulante.tecnologias}
+            td 
+              a(href="/postulantes/verT/#{postulante._id}") Ver
+  -else
+    p No se han encontrado postulantes
+  a(href="/") volver al inicio

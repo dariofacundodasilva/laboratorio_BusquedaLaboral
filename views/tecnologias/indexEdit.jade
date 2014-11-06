@@ -1,0 +1,27 @@
+﻿extends ../layout
+block content
+  h1 Tecnologias
+  table
+    thead
+      tr
+        th Nombre
+    tbody
+      -each tecnologia in tecnologias
+        tr
+        -if(tecnologia.id==tecnologiaEdit)
+          form(method="post", action="#{action}")
+            -if(put)
+              input(type="hidden" name="_method" value="PUT")
+            td
+              input(type="text" name="nombre" required="required" value=tecnologia.nombre)
+              
+            td 
+              input(type="submit", value="Guardar")
+            td 
+              a(href="/tecnologias") Cancelar
+        -else
+          td #{tecnologia.nombre}
+           
+  
+   
+  a(href="/") volver al inicio
